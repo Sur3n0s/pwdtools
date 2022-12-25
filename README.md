@@ -27,7 +27,7 @@ But if you prefer to run the program through the command line, then you must hav
 To do this, you need to install the pyqt5 package:
 <i>pip install pyqt5</i>
 or
-<i>pip install -r requirements.txt>
+<i>pip install -r requirements.txt</i>
 (From the cloned directory with the file "rquirements.txt")
 After that, simply run:
 <i>python pwdtools.py</i>
