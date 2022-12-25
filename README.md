@@ -16,7 +16,7 @@ I tried to make everything clear and beautiful. In the future I plan to refine t
 #Installation
 
 For linux users:
-<i>pip install -r requirements.txt</i?
+<i>pip install -r requirements.txt</i>
 (From the cloned directory with the file "rquirements.txt")
 Running the program:
 <i>python3 pwdtools.py</i>
