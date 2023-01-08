@@ -16,41 +16,45 @@ class DialogMain(QDialog):
         self.setFixedWidth(760)
         self.setStyleSheet("background-color: '#fcfcfc';")
         self.AllComponents()
-        self.Ceasar()
+        self.ceasar()
 
     def AllComponents(self):
 
         # Frames
 
-        self.FirstFrame = QFrame(self)
-        self.FirstFrame.setGeometry(20, 20, 720, 90)
-        self.FirstFrame.setStyleSheet("background-color: '#eadef7';" +
+        self.frameFirst = QFrame(self)
+        self.frameFirst.setGeometry(20, 20, 720, 90)
+        self.frameFirst.setStyleSheet("background-color: '#eadef7';" +
                                       "border: none;")
 
-        self.SecondFrame = QFrame(self)
-        self.SecondFrame.setGeometry(20, 130, 720, 150)
-        self.SecondFrame.setStyleSheet("background-color: '#eadef7';" +
+        self.frameSecond = QFrame(self)
+        self.frameSecond.setGeometry(20, 130, 720, 150)
+        self.frameSecond.setStyleSheet("background-color: '#eadef7';" +
                                        "border: none;")
 
-        self.ThirdFrame = QFrame(self)
-        self.ThirdFrame.setGeometry(20, 300, 720, 170)
-        self.ThirdFrame.setStyleSheet("background-color: '#eadef7';" +
+        self.frameThird = QFrame(self)
+        self.frameThird.setGeometry(20, 300, 720, 170)
+        self.frameThird.setStyleSheet("background-color: '#eadef7';" +
             "border: none;")
 
-        self.GreenLine = QFrame(self)
-        self.GreenLine.setGeometry(20, 101, 720, 10)
-        self.GreenLine.setStyleSheet("QFrame {"
+        self.frameGreenLine = QFrame(self)
+        self.frameGreenLine.setGeometry(20, 101, 720, 10)
+        self.frameGreenLine.setStyleSheet("QFrame {"
             "background-color: green;" +
             "border: none;"
             "}")
 
+        self.frameGreyDecorationLine = QFrame(self)
+        self.frameGreyDecorationLine.setGeometry(40, 170, 681, 1)
+        self.frameGreyDecorationLine.setStyleSheet("background-color: grey;")
+
         # LineEdit
 
-        self.LineEditPasswd = QLineEdit("Password", self)
-        self.LineEditPasswd.setGeometry(50, 40, 520, 40)
-        self.LineEditPasswd.setReadOnly(True)
-        self.LineEditPasswd.setCursor(QtCore.Qt.IBeamCursor)
-        self.LineEditPasswd.setStyleSheet(" QLineEdit {"
+        self.lineEditPassword = QLineEdit("Password", self)
+        self.lineEditPassword.setGeometry(50, 40, 520, 40)
+        self.lineEditPassword.setReadOnly(True)
+        self.lineEditPassword.setCursor(QtCore.Qt.IBeamCursor)
+        self.lineEditPassword.setStyleSheet(" QLineEdit {"
             "background: '#eadef7';" +
             "color: black;" +
             "border: none;" +
@@ -60,30 +64,30 @@ class DialogMain(QDialog):
 
         # Labels
 
-        self.LabelPasswdLen = QLabel("Password Lenght", self)
-        self.LabelPasswdLen.setFont(Qt.QFont("Monospace", 10))
-        self.LabelPasswdLen.setGeometry(40, 180, 130, 20)
-        self.LabelPasswdLen.setStyleSheet("QLabel {"
+        self.labelPasswwordLenght = QLabel("Password Lenght", self)
+        self.labelPasswwordLenght.setFont(Qt.QFont("Monospace", 10))
+        self.labelPasswwordLenght.setGeometry(40, 180, 130, 20)
+        self.labelPasswwordLenght.setStyleSheet("QLabel {"
             "color: rgb(0, 0, 0);" +
             "background-color: transparent;" +
             "}")
 
-        self.LabelCustomize = QLabel("Customize your password", self)
-        self.LabelCustomize.setFont(Qt.QFont("Monospace", 15))
-        self.LabelCustomize.setGeometry(40, 130, 350, 40)
-        self.LabelCustomize.setStyleSheet("QLabel {"
+        self.labelCustomize = QLabel("Customize your password", self)
+        self.labelCustomize.setFont(Qt.QFont("Monospace", 15))
+        self.labelCustomize.setGeometry(40, 130, 350, 40)
+        self.labelCustomize.setStyleSheet("QLabel {"
             "color: black;" +
             "background-color: transparent;" +
             "}")
 
         # Buttons
 
-        self.btnGenerate = QPushButton(self)
-        self.btnGenerate.setGeometry(660, 30, 64, 64)
-        self.btnGenerate.setToolTip('<p style="color:black;">Refresh</p>')
-        self.btnGenerate.setCursor(QtCore.Qt.PointingHandCursor)
-        self.btnGenerate.clicked.connect(self.main_check)
-        self.btnGenerate.setStyleSheet("QPushButton {"
+        self.buttonGenerate = QPushButton(self)
+        self.buttonGenerate.setGeometry(660, 30, 64, 64)
+        self.buttonGenerate.setToolTip('<p style="color:black;">Refresh</p>')
+        self.buttonGenerate.setCursor(QtCore.Qt.PointingHandCursor)
+        self.buttonGenerate.clicked.connect(self.password_generation)
+        self.buttonGenerate.setStyleSheet("QPushButton {"
             "background-image: url(refresh.png);" +
             "border-radius: 30px;" +
             "background-color: none;" +
@@ -98,12 +102,12 @@ class DialogMain(QDialog):
             "background-color: '#a4a4a4';"
             "}")
 
-        self.btnCopy = QPushButton(self)
-        self.btnCopy.setGeometry(590, 30, 64, 64)
-        self.btnCopy.setToolTip('<p style="color: black;">Copy</p>')
-        self.btnCopy.setCursor(QtCore.Qt.PointingHandCursor)
-        self.btnCopy.clicked.connect(self.button_copy)
-        self.btnCopy.setStyleSheet("QPushButton {"
+        self.buttonCopy = QPushButton(self)
+        self.buttonCopy.setGeometry(590, 30, 64, 64)
+        self.buttonCopy.setToolTip('<p style="color: black;">Copy</p>')
+        self.buttonCopy.setCursor(QtCore.Qt.PointingHandCursor)
+        self.buttonCopy.clicked.connect(self.button_copy)
+        self.buttonCopy.setStyleSheet("QPushButton {"
             "background-image: url(copy.png);" +
             "border-radius: 5px;" +
             "background-color: none;" +
@@ -120,26 +124,26 @@ class DialogMain(QDialog):
 
         # RadioButtons
 
-        self.RadioBtnEasySay = QRadioButton("Easy to say", self)
-        self.RadioBtnEasySay.setFont(Qt.QFont("Monospace", 10))
-        self.RadioBtnEasySay.setGeometry(350, 180, 110, 22)
-        self.RadioBtnEasySay.toggled.connect(self.radio_buttons_check)
-        self.RadioBtnEasySay.setStyleSheet("color: black;" +
+        self.radioButtonEasySay = QRadioButton("Easy to say", self)
+        self.radioButtonEasySay.setFont(Qt.QFont("Monospace", 10))
+        self.radioButtonEasySay.setGeometry(350, 180, 110, 22)
+        self.radioButtonEasySay.toggled.connect(self.radio_buttons_options)
+        self.radioButtonEasySay.setStyleSheet("color: black;" +
                                            "background-color: transparent;")
 
-        self.RadioBtnEasyRead = QRadioButton("Easy to read", self)
-        self.RadioBtnEasyRead.setFont(Qt.QFont("Monospace", 10))
-        self.RadioBtnEasyRead.setGeometry(350, 210, 110, 22)
-        self.RadioBtnEasyRead.toggled.connect(self.radio_buttons_check)
-        self.RadioBtnEasyRead.setStyleSheet("color: black;" +
+        self.radioButtonEasyRead = QRadioButton("Easy to read", self)
+        self.radioButtonEasyRead.setFont(Qt.QFont("Monospace", 10))
+        self.radioButtonEasyRead.setGeometry(350, 210, 110, 22)
+        self.radioButtonEasyRead.toggled.connect(self.radio_buttons_options)
+        self.radioButtonEasyRead.setStyleSheet("color: black;" +
                                             "background-color: transparent;")
 
-        self.RadioBtnAllChar = QRadioButton("All Characters", self)
-        self.RadioBtnAllChar.setFont(Qt.QFont("Monospace", 10))
-        self.RadioBtnAllChar.setGeometry(350, 240, 110, 22)
-        self.RadioBtnAllChar.setChecked(True)
-        self.RadioBtnAllChar.toggled.connect(self.radio_buttons_check)
-        self.RadioBtnAllChar.setStyleSheet("color: black;" +
+        self.radioButtonAllChar = QRadioButton("All Characters", self)
+        self.radioButtonAllChar.setFont(Qt.QFont("Monospace", 10))
+        self.radioButtonAllChar.setGeometry(350, 240, 110, 22)
+        self.radioButtonAllChar.setChecked(True)
+        self.radioButtonAllChar.toggled.connect(self.radio_buttons_options)
+        self.radioButtonAllChar.setStyleSheet("color: black;" +
                                            "background-color: transparent;")
 
         # CheckBoxes
@@ -153,27 +157,27 @@ class DialogMain(QDialog):
             "background-color: transparent;"
             "}")
 
-        self.checkBoxLowcase = QCheckBox("Lowercase", self)
-        self.checkBoxLowcase.setFont(Qt.QFont("Monospace", 10))
-        self.checkBoxLowcase.setGeometry(550, 200, 88, 22)
-        self.checkBoxLowcase.setChecked(True)
-        self.checkBoxLowcase.setStyleSheet("QCheckBox {"
+        self.checkBoxLowercase = QCheckBox("Lowercase", self)
+        self.checkBoxLowercase.setFont(Qt.QFont("Monospace", 10))
+        self.checkBoxLowercase.setGeometry(550, 200, 88, 22)
+        self.checkBoxLowercase.setChecked(True)
+        self.checkBoxLowercase.setStyleSheet("QCheckBox {"
             "color: black;" +
             "background-color: transparent;"
             "}")
 
-        self.checkBoxNum = QCheckBox("Numbers", self)
-        self.checkBoxNum.setFont(Qt.QFont("Monospace", 10))
-        self.checkBoxNum.setGeometry(550, 220, 88, 22)
-        self.checkBoxNum.setStyleSheet("QCheckBox {"
+        self.checkBoxNumbers = QCheckBox("Numbers", self)
+        self.checkBoxNumbers.setFont(Qt.QFont("Monospace", 10))
+        self.checkBoxNumbers.setGeometry(550, 220, 88, 22)
+        self.checkBoxNumbers.setStyleSheet("QCheckBox {"
             "color: black;" +
             "background-color: transparent;"
             "}")
 
-        self.checkBoxSym = QCheckBox("Symbols", self)
-        self.checkBoxSym.setFont(Qt.QFont("Monospace", 10))
-        self.checkBoxSym.setGeometry(550, 240, 88, 22)
-        self.checkBoxSym.setStyleSheet("QCheckBox {"
+        self.checkBoxSymbols = QCheckBox("Symbols", self)
+        self.checkBoxSymbols.setFont(Qt.QFont("Monospace", 10))
+        self.checkBoxSymbols.setGeometry(550, 240, 88, 22)
+        self.checkBoxSymbols.setStyleSheet("QCheckBox {"
             "color: black;" +
             "background-color: transparent;"
             "}")
@@ -187,7 +191,7 @@ class DialogMain(QDialog):
         self.SliderValue.setGeometry(100, 225, 160, 20)
         self.SliderValue.setOrientation(QtCore.Qt.Horizontal)
         self.SliderValue.setToolTip(str(self.SliderValue.value()))
-        self.SliderValue.valueChanged.connect(self.slider_value_act)
+        self.SliderValue.valueChanged.connect(self.slider_value_synchronization)
         self.SliderValue.setStyleSheet("color: black;" +
                                        "background-color: '#eadef7';")
 
@@ -199,7 +203,7 @@ class DialogMain(QDialog):
                                 minimum=1,
                                 singleStep=1)
         self.spinBoxValue.setGeometry(40, 220, 52, 32)
-        self.spinBoxValue.valueChanged.connect(self.spinbox_value_act)
+        self.spinBoxValue.valueChanged.connect(self.spinbox_value_synchronization)
         self.spinBoxValue.setStyleSheet("QSpinBox {"
             "color: black;" +
             "font-family: Arial Black;" +
@@ -207,25 +211,19 @@ class DialogMain(QDialog):
             "background-color: transparent;"
             "}")
 
-        # Line
+    #Functions
 
-        self.DecorLine = QFrame(self)
-        self.DecorLine.setGeometry(40, 170, 681, 1)
-        self.DecorLine.setStyleSheet("background-color: grey;")
-
-        #Functions
-
-    def slider_value_act(self):
+    def slider_value_synchronization(self):
         current = self.SliderValue.value()
         self.spinBoxValue.setValue(current)
-        self.main_check()
+        self.password_generation()
 
-    def spinbox_value_act(self):
+    def spinbox_value_synchronization(self):
         current = self.spinBoxValue.value()
         self.SliderValue.setValue(current)
-        self.main_check()
+        self.password_generation()
 
-    def main_check(self):
+    def password_generation(self):
 
         # Lists
 
@@ -235,126 +233,131 @@ class DialogMain(QDialog):
         list_symbols = ('!@#$%^&*()_=+-<>?/\|~')
         list_main = ''
 
+        cBUppercase = self.checkBoxUppercase.isChecked()
+        cBLowercase = self.checkBoxLowercase.isChecked()
+        cBNumbers = self.checkBoxNumbers.isChecked()
+        cBSymbols = self.checkBoxSymbols.isChecked()
+
         # Operations
 
-        if self.checkBoxUppercase.isChecked() == True and self.checkBoxLowcase.isChecked() == True and self.checkBoxNum.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        if not False in {cBUppercase, cBLowercase, cBNumbers, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_lowcase + list_numbers + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True and self.checkBoxLowcase.isChecked() == True and self.checkBoxNum.isChecked() == True:
+        elif not False in {cBUppercase, cBLowercase, cBNumbers}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_lowcase + list_numbers)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True and self.checkBoxLowcase.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        elif not False in {cBUppercase, cBLowercase, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_lowcase + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True and self.checkBoxNum.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        elif not False in {cBUppercase, cBNumbers, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_numbers + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxLowcase.isChecked() == True and self.checkBoxNum.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        elif not False in {cBLowercase, cBNumbers, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_lowcase + list_numbers + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True and self.checkBoxLowcase.isChecked() == True:
+        elif not False in {cBUppercase, cBLowercase}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_lowcase)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxLowcase.isChecked() == True and self.checkBoxNum.isChecked() == True:
+        elif not False in {cBLowercase, cBNumbers}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_lowcase + list_numbers)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxNum.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        elif not False in {cBNumbers, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_numbers + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True and self.checkBoxNum.isChecked() == True:
+        elif not False in {cBUppercase, cBNumbers}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_numbers)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxLowcase.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        elif not False in {cBLowercase, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_lowcase + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True and self.checkBoxSym.isChecked() == True:
+        elif not False in {cBUppercase, cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase + list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxSym.isChecked() == True:
+        elif not False in {cBSymbols}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_symbols)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxNum.isChecked() == True:
+        elif not False in {cBNumbers}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_numbers)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxUppercase.isChecked() == True:
+        elif not False in {cBUppercase}:
             for x in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_uppcase)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
-        elif self.checkBoxLowcase.isChecked() == True:
+        elif not False in {cBLowercase}:
             for i in range(self.spinBoxValue.value()):
                 list_main = list_main + random.choice(list_lowcase)
-                self.LineEditPasswd.setText(list_main)
+                self.lineEditPassword.setText(list_main)
 
         else:
-            self.LineEditPasswd.setText('Please, choose valid option')
+            self.lineEditPassword.setText('Please, choose valid option')
 
-    def radio_buttons_check(self):
-        if self.RadioBtnEasyRead.isChecked():
-            self.checkBoxSym.setEnabled(False)
-            self.checkBoxNum.setEnabled(False)
-            self.checkBoxSym.setChecked(False)
-            self.checkBoxNum.setChecked(False)
-            self.checkBoxSym.setStyleSheet("QCheckBox {"
+    def radio_buttons_options(self):
+        if self.radioButtonEasyRead.isChecked():
+            self.checkBoxSymbols.setEnabled(False)
+            self.checkBoxNumbers.setEnabled(False)
+            self.checkBoxSymbols.setChecked(False)
+            self.checkBoxNumbers.setChecked(False)
+            self.checkBoxSymbols.setStyleSheet("QCheckBox {"
                 "color: grey;" +
                 "background-color: transparent;"
                 "}")
 
-            self.checkBoxNum.setStyleSheet("QCheckBox {"
+            self.checkBoxNumbers.setStyleSheet("QCheckBox {"
                 "color: grey;" +
                 "background-color: transparent;"
                 "}")
 
-        elif self.RadioBtnEasySay.isChecked():
-            self.checkBoxSym.setEnabled(False)
-            self.checkBoxNum.setEnabled(False)
-            self.checkBoxSym.setChecked(False)
-            self.checkBoxNum.setChecked(False)
-            self.checkBoxSym.setStyleSheet("QCheckBox {"
+        elif self.radioButtonEasySay.isChecked():
+            self.checkBoxSymbols.setEnabled(False)
+            self.checkBoxNumbers.setEnabled(False)
+            self.checkBoxSymbols.setChecked(False)
+            self.checkBoxNumbers.setChecked(False)
+            self.checkBoxSymbols.setStyleSheet("QCheckBox {"
                 "color: grey;" +
                 "background-color: transparent;"
                 "}")
 
-            self.checkBoxNum.setStyleSheet("QCheckBox {"
+            self.checkBoxNumbers.setStyleSheet("QCheckBox {"
                 "color: grey;" +
                 "background-color: transparent;"
                 "}")
 
         else:
-            self.checkBoxSym.setEnabled(True)
-            self.checkBoxNum.setEnabled(True)
-            self.checkBoxSym.setStyleSheet("QCheckBox {"
+            self.checkBoxSymbols.setEnabled(True)
+            self.checkBoxNumbers.setEnabled(True)
+            self.checkBoxSymbols.setStyleSheet("QCheckBox {"
                 "color: black;" +
                 "background-color: transparent;"
                 "}")
 
-            self.checkBoxNum.setStyleSheet("QCheckBox {"
+            self.checkBoxNumbers.setStyleSheet("QCheckBox {"
                 "color: black;" +
                 "background-color: transparent;"
                 "}")
@@ -362,13 +365,13 @@ class DialogMain(QDialog):
     def button_copy(self):
         copy = QApplication.clipboard()
         copy.clear(mode=copy.Clipboard)
-        copy.setText(self.LineEditPasswd.text(), mode=copy.Clipboard)
+        copy.setText(self.lineEditPassword.text(), mode=copy.Clipboard)
 
     #########################
     ######CEASAR CIPHER######
     #########################
 
-    def Ceasar(self):
+    def ceasar(self):
 
         operations = ["Encrypt", "Decrypt"]
         offset = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26"]
@@ -402,35 +405,35 @@ class DialogMain(QDialog):
 
         # ComboBoxes
 
-        self.ceasarComboOperations = QComboBox(self)
-        self.ceasarComboOperations.setFont(Qt.QFont("Monospace", 9))
-        self.ceasarComboOperations.setGeometry(100, 430, 140, 20)
-        self.ceasarComboOperations.addItems(operations)
+        self.ceasarComboBoxOperations = QComboBox(self)
+        self.ceasarComboBoxOperations.setFont(Qt.QFont("Monospace", 9))
+        self.ceasarComboBoxOperations.setGeometry(100, 430, 140, 20)
+        self.ceasarComboBoxOperations.addItems(operations)
 
-        self.ceasarComboOffset = QComboBox(self)
-        self.ceasarComboOffset.setFont(Qt.QFont("Monospace", 9))
-        self.ceasarComboOffset.setGeometry(290, 430, 60, 20)
-        self.ceasarComboOffset.addItems(offset)
+        self.ceasarComboBoxOffset = QComboBox(self)
+        self.ceasarComboBoxOffset.setFont(Qt.QFont("Monospace", 9))
+        self.ceasarComboBoxOffset.setGeometry(290, 430, 60, 20)
+        self.ceasarComboBoxOffset.addItems(offset)
 
         # Labels
 
-        self.ceasarSignLabel = QLabel("Ceasar Cipher", self)
-        self.ceasarSignLabel.setFont(Qt.QFont("Monospace", 15))
-        self.ceasarSignLabel.setGeometry(40, 300, 300, 40)
-        self.ceasarSignLabel.setStyleSheet("QLabel {"
+        self.ceasarLabelSign = QLabel("Ceasar Cipher", self)
+        self.ceasarLabelSign.setFont(Qt.QFont("Monospace", 15))
+        self.ceasarLabelSign.setGeometry(40, 300, 300, 40)
+        self.ceasarLabelSign.setStyleSheet("QLabel {"
             "color: black;" +
             "background-color: none;"
             "}")
 
-        self.ceasarOperaitonLabel = QLabel("Operation", self)
-        self.ceasarOperaitonLabel.setGeometry(40, 430, 60, 20)
-        self.ceasarOperaitonLabel.setFont(Qt.QFont("Monospace", 10))
-        self.ceasarOperaitonLabel.setStyleSheet("background-color: none;")
+        self.ceasarLabelOperaiton = QLabel("Operation", self)
+        self.ceasarLabelOperaiton.setGeometry(40, 430, 60, 20)
+        self.ceasarLabelOperaiton.setFont(Qt.QFont("Monospace", 10))
+        self.ceasarLabelOperaiton.setStyleSheet("background-color: none;")
 
-        self.ceasarOffsetLabel = QLabel("Offset", self)
-        self.ceasarOffsetLabel.setFont(Qt.QFont("Monospace", 10))
-        self.ceasarOffsetLabel.setGeometry(250, 430, 40, 20)
-        self.ceasarOffsetLabel.setStyleSheet("background-color: none;")
+        self.ceasarLabelOffset = QLabel("Offset", self)
+        self.ceasarLabelOffset.setFont(Qt.QFont("Monospace", 10))
+        self.ceasarLabelOffset.setGeometry(250, 430, 40, 20)
+        self.ceasarLabelOffset.setStyleSheet("background-color: none;")
 
         # Buttons
 
@@ -438,7 +441,7 @@ class DialogMain(QDialog):
         self.ceasarButtonEncrypt.setFont(Qt.QFont("Monospace", 8))
         self.ceasarButtonEncrypt.setGeometry(360, 430, 280, 20)
         self.ceasarButtonEncrypt.setCursor(QtCore.Qt.PointingHandCursor)
-        self.ceasarButtonEncrypt.clicked.connect(self.ceasar_encrypt_decrypt_btn)
+        self.ceasarButtonEncrypt.clicked.connect(self.ceasar_encrypt_decrypt_button)
         self.ceasarButtonEncrypt.setStyleSheet("QPushButton {"
             "border: 2px solid black;" +
             "border-radius: 10px;" +
@@ -454,12 +457,12 @@ class DialogMain(QDialog):
             "background-color: '#24a320'" +
             "}")
 
-        self.ceasarButtonClean = QPushButton("Clean", self)
-        self.ceasarButtonClean.setFont(Qt.QFont("Monospace", 9))
-        self.ceasarButtonClean.setGeometry(685, 350, 35, 30)
-        self.ceasarButtonClean.setCursor(QtCore.Qt.PointingHandCursor)
-        self.ceasarButtonClean.clicked.connect(self.ceasar_clean_result)
-        self.ceasarButtonClean.setStyleSheet("QPushButton {"
+        self.ceasarButtonCleanResult = QPushButton("Clean", self)
+        self.ceasarButtonCleanResult.setFont(Qt.QFont("Monospace", 9))
+        self.ceasarButtonCleanResult.setGeometry(685, 350, 35, 30)
+        self.ceasarButtonCleanResult.setCursor(QtCore.Qt.PointingHandCursor)
+        self.ceasarButtonCleanResult.clicked.connect(self.ceasar_clean_result)
+        self.ceasarButtonCleanResult.setStyleSheet("QPushButton {"
             "background-color: '#f4edfc';" +
             "border: 2px solid black;" +
             "border-bottom-right-radius: 15px;" +
@@ -475,12 +478,12 @@ class DialogMain(QDialog):
             "background-color: '#b23134'" +
             "}")
 
-        self.ceasarButtonClean2 = QPushButton("Clean", self)
-        self.ceasarButtonClean2.setFont(Qt.QFont("Monospace", 9))
-        self.ceasarButtonClean2.setGeometry(685, 390, 35, 30)
-        self.ceasarButtonClean2.setCursor(QtCore.Qt.PointingHandCursor)
-        self.ceasarButtonClean2.clicked.connect(self.ceasar_clean_text)
-        self.ceasarButtonClean2.setStyleSheet("QPushButton {"
+        self.ceasarButtonCleanText = QPushButton("Clean", self)
+        self.ceasarButtonCleanText.setFont(Qt.QFont("Monospace", 9))
+        self.ceasarButtonCleanText.setGeometry(685, 390, 35, 30)
+        self.ceasarButtonCleanText.setCursor(QtCore.Qt.PointingHandCursor)
+        self.ceasarButtonCleanText.clicked.connect(self.ceasar_clean_text)
+        self.ceasarButtonCleanText.setStyleSheet("QPushButton {"
             "background-color: '#f4edfc';" +
             "border: 2px solid black;" +
             "border-top-right-radius: 15px;" +
@@ -517,11 +520,11 @@ class DialogMain(QDialog):
 
         # Decoration Line
 
-        self.ceasarDecorLine = QFrame(self)
-        self.ceasarDecorLine.setGeometry(40, 340, 681, 1)
-        self.ceasarDecorLine.setStyleSheet("background-color: grey;")
+        self.ceasarFrameDecorationLine = QFrame(self)
+        self.ceasarFrameDecorationLine.setGeometry(40, 340, 681, 1)
+        self.ceasarFrameDecorationLine.setStyleSheet("background-color: grey;")
 
-    def ceasar_encrypt_decrypt_btn(self):
+    def ceasar_encrypt_decrypt_button(self):
 
         if self.ceasarLineEdit.text() == '' or self.ceasarLineEdit.text() == ' ':
 
@@ -531,7 +534,7 @@ class DialogMain(QDialog):
 
             def get_operation(self):
                 global operation
-                operation = self.ceasarComboOperations.currentText()
+                operation = self.ceasarComboBoxOperations.currentText()
             get_operation(self)
 
             def get_typed_text(self):
@@ -541,7 +544,7 @@ class DialogMain(QDialog):
 
             def get_offset(self):
                 global offset
-                offset = int(self.ceasarComboOffset.currentText())
+                offset = int(self.ceasarComboBoxOffset.currentText())
                 if (offset >= 1 and offset <= 26):
                     return offset
             get_offset(self)
