@@ -1,33 +1,34 @@
-# pwdtools
-A simple program for creating passwords and tools for working with them.
+<h1 align="center">pwdtools</h1>
 
+<p align="center">A simple little program written in the `PyQt5` library. In this program you can generate a password as well as encrypt it with caesar cipher. This is where all the functionality ends for now, but I will try to implement new ideas when I get them into my program.</p>
 
-An improved version of the password generator from my other repository (https://github.com/Sur3n0s/PasswordGenerator)
+<p align="center"><i>You can offer your ideas</i></p>
 
-Changes:
+<br>
+<h2 align="center">Screenshot</h2>
+<img src="https://github.com/Sur3n0s/pwdtools/blob/main/pwd.png" align="center">
 
-<li>Caesar's Cipher added</li>
-<li>Cleaned the code</li>
-<li>Changed font to Monospace</li>
-<li>Added exe-file for Windows users</li>
+<br>
+<h2 align="center">Installation</h2>
+<br>
 
-I tried to make everything clear and beautiful. In the future I plan to refine this program, and also to style it differently. I would be grateful for your support.
+**`Python3+` must be installed on your computer!**
 
-#Installation
+First, open the Terminal/Command Prompt and install the `PyQt5` library:
+```python
+pip install PyQt5
+```
 
-For linux users:
-<i>pip install -r requirements.txt</i>
-(From the cloned directory with the file "rquirements.txt")
-Running the program:
-<i>python3 pwdtools.py</i>
+The instructions are divided further for Linux and Windows:
 
-For Windows users:
-Just run the exe file
-But if you prefer to run the program through the command line, then you must have python3+ installed.
-To do this, you need to install the pyqt5 package:
-<i>pip install pyqt5</i>
-or
-<i>pip install -r requirements.txt</i>
-(From the cloned directory with the file "rquirements.txt")
-After that, simply run:
-<i>python pwdtools.py</i>
+**Linux:**  
+Just run the program with ``python3``:
+```python
+python3 pwdtools.py
+```
+
+**Windows:**  
+You can run the program by double-clicking the ``pwdtools.py`` file or from the console by writing:
+```python
+python pwdtools.py
+```
